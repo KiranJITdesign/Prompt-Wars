@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple, open-source tool to check urban air quality and get health recommendations.">
+    <title>Urban Air Quality Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Urban Air Quality Assistant</h1>
+        <p>Check the air you breathe. Make informed health decisions.</p>
+    </header>
+
+    <main>
+        <section class="search-container" aria-label="City Search">
+            <form id="search-form">
+                <label for="city-input" class="sr-only">Enter City Name</label>
+                <input type="text" id="city-input" placeholder="Enter city (e.g., Mumbai, London)" required aria-required="true">
+                <button type="submit" id="search-btn">Check Air Quality</button>
+            </form>
+        </section>
+
+        <section id="results-container" aria-live="polite" class="hidden">
+            <div class="card">
+                <h2 id="city-name">City Name</h2>
+                <div class="aqi-display">
+                    <span id="aqi-value">--</span>
+                    <span id="aqi-label">AQI</span>
+                </div>
+                <p id="health-advice" class="advice"></p>
+                <p class="pollutant">Main Pollutant: <span id="main-pollutant">--</span></p>
+            </div>
+        </section>
+        
+        <section id="error-message" class="hidden error" aria-live="assertive">
+            <p id="error-text"></p>
+        </section>
+
+        <section class="map-view" aria-labelledby="map-heading">
+            <h2 id="map-heading">Urban Air Quality Map</h2>
+            <script src="https://aqicn.org/maplet/embed.v1.js"
+                    data-city="india"
+                    data-lat="22.8997"
+                    data-lng="81.2903"
+                    data-zoom="4.69"
+                    data-height="500"></script>
+        </section>
+    </main>
+
+    <footer>
+        <p>Data provided by <a href="https://aqicn.org/api/" target="_blank" rel="noopener">World Air Quality Index Project</a></p>
+        <p>Open Source Project | MIT License</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
